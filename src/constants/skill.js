@@ -2,7 +2,7 @@ export const skills = [
     {
         type: 'Backend',
         value: [
-            {name: 'Laravel', yearOfExperience: 7},
+            {name: 'Laravel', yearOfExperience: 6},
             {name: 'NodeJS', yearOfExperience: 3},
         ]
     },

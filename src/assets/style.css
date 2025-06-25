@@ -45,7 +45,7 @@
 /* Advanced Animations */
 @keyframes gradientShift {
     0%, 100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
     50% {
         background-position: 100% 50%;
@@ -141,23 +141,23 @@
 }
 
 .animate-fade-in {
-    animation: fadeInUp 1s ease-out forwards;
+    animation: fadeInUp 0.75s ease-out forwards;
 }
 
 .animate-fade-left {
-    animation: fadeInLeft 1s ease-out forwards;
+    animation: fadeInLeft 0.75s ease-out forwards;
 }
 
 .animate-fade-right {
-    animation: fadeInRight 1s ease-out forwards;
+    animation: fadeInRight 0.75s ease-out forwards;
 }
 
 .animate-scale-in {
-    animation: scaleIn 1s ease-out forwards;
+    animation: scaleIn 0.75s ease-out forwards;
 }
 
 .animate-bounce-in {
-    animation: bounceIn 1s ease-out forwards;
+    animation: bounceIn 0.75s ease-out forwards;
 }
 
 .animate-pulse {

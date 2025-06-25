@@ -1,27 +1,24 @@
 <script setup>
 import {defineComponent} from 'vue';
+import {info} from '@/constants/info';
+import {socials} from '@/constants/social';
 
 defineComponent({name: 'FooterComponent'});
 </script>
 
 <template>
-  <footer class="bg-gray-800 text-white py-8">
+  <footer class="bg-gray-600 text-white py-8">
     <div class="container mx-auto px-6 text-center">
-      <p class="mb-4">© 2025 Đỗ Vũ Tuấn. All rights reserved.</p>
       <div class="flex justify-center gap-6">
-        <a href="#" class="hover:text-purple-400 transition-colors">
-          <i class="fab fa-github text-xl"></i>
-        </a>
-        <a href="#" class="hover:text-purple-400 transition-colors">
-          <i class="fab fa-linkedin text-xl"></i>
-        </a>
-        <a href="#" class="hover:text-purple-400 transition-colors">
-          <i class="fab fa-twitter text-xl"></i>
-        </a>
-        <a href="#" class="hover:text-purple-400 transition-colors">
-          <i class="fas fa-envelope text-xl"></i>
+        <a v-for="(social, is) of socials"
+           :key="is"
+           :href="social.href"
+           target="_blank"
+           class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all animate-bounce-in stagger-4 animate-icon">
+          <i :class="social.icon" class="text-xl"></i>
         </a>
       </div>
+      <p class="mt-4">© {{new Date().getFullYear()}} {{ info.name }}. All rights reserved.</p>
     </div>
   </footer>
 </template>
