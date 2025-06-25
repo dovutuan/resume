@@ -1,0 +1,5 @@
+# robots.txt for https://dovutuan.github.io/resume/
+
+User-agent: *
+Allow: /
+Disallow: /404.html
