@@ -24,9 +24,8 @@ const totalProjects = () => {
         <!-- Avatar & Basic Info -->
         <div class="text-center lg:text-left animate-fade-in">
           <div class="w-48 h-48 mx-auto lg:mx-0 mb-6 rounded-full bg-white p-2 shadow-2xl animate-float">
-            <div
-                class="w-full h-full rounded-full from-purple-400 to-blue-500 flex items-center justify-center">
-              <!--              <img class="animate-pulse" alt="logo" src="../assets/logo.png">-->
+            <div class="w-full h-full rounded-full from-purple-400 to-blue-500 flex items-center justify-center">
+              <img class="animate-pulse" alt="logo" src="../assets/logo.png">
             </div>
           </div>
           <h1 class="text-4xl lg:text-5xl font-bold mb-2">{{ info.name }}</h1>
