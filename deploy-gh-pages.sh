@@ -2,42 +2,69 @@
 
 set -e
 
-echo "📦 Bắt đầu quá trình build..."
-npm run build
+# Helper for styled output
+print_step() {
+  echo ""
+  echo "🔹 $1"
+  echo "----------------------------------------"
+}
 
-# Lưu branch hiện tại
+print_done() {
+  echo "✅ $1"
+}
+
+print_warn() {
+  echo "⚠️ $1"
+}
+
+# Step 1: Build the project
+print_step "Starting build process..."
+npm run build
+print_done "Build completed."
+
+# Step 2: Save current branch
 CURRENT_BRANCH=$(git branch --show-current)
 
-# Kiểm tra gh-pages đã tồn tại ở remote chưa
+# Step 3: Check if gh-pages exists
+print_step "Checking if 'gh-pages' branch exists..."
 if ! git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
-  echo "🔧 Branch gh-pages chưa tồn tại. Đang tạo mới..."
+  print_warn "'gh-pages' branch does not exist. Creating..."
   git checkout --orphan gh-pages
   git reset --hard
   git commit --allow-empty -m "Init gh-pages"
   git push origin gh-pages
   git checkout "$CURRENT_BRANCH"
+  print_done "'gh-pages' branch created."
 else
-  echo "✅ Branch gh-pages đã tồn tại."
+  print_done "'gh-pages' branch already exists."
 fi
 
-# Tạo worktree để deploy
-echo "🚀 Đang deploy lên gh-pages..."
+# Step 4: Prepare worktree
+print_step "Preparing worktree for deployment..."
 rm -rf gh-pages-temp
 git worktree prune
 git worktree add gh-pages-temp gh-pages
+print_done "Worktree ready."
 
-# Làm sạch và sao chép nội dung mới
+# Step 5: Copy build output
+print_step "Copying build output to worktree..."
 rm -rf gh-pages-temp/*
 cp -r dist/* gh-pages-temp/
+print_done "Files copied."
 
-# Commit & push
+# Step 6: Squash & push
+print_step "Committing and squashing to 'gh-pages'..."
 cd gh-pages-temp
+git reset --soft $(git rev-list --max-parents=0 HEAD)
 git add .
-git commit -m "Deploy to GitHub Pages" || echo "⚠️ Không có thay đổi để commit."
-git push origin gh-pages
+git commit -m "Deploy to GitHub Pages"
+git push --force origin gh-pages
+
 cd ..
+print_done "Deployed and squashed successfully."
 
-# Cleanup
+# Step 7: Cleanup
+print_step "Cleaning up..."
 git worktree remove gh-pages-temp
-
-echo "🎉 Deploy thành công lên GitHub Pages!"
+rm -rf dist
+print_done "Deployment completed successfully! 🎉"
