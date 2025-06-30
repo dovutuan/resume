@@ -12,7 +12,7 @@ export const skills = [
             {name: 'VueJS', yearOfExperience: 5},
             {name: 'Angular', yearOfExperience: 3},
             {name: 'NuxtJS', yearOfExperience: 3},
-            {name: 'NextJS', yearOfExperience: 3},
+            {name: 'NextJS', yearOfExperience: 1},
         ]
     },
     {
