@@ -34,12 +34,11 @@
     <meta name="google-site-verification" content="LAZnhWhK_w8eMLg36eKeeGV9GrGXAUKSZbC3pNoP-oM"/>
 </head>
 
-<body class="bg-gray-50 min-h-screen">
+<body id="app" class="bg-gray-50 min-h-screen">
 <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
         Please enable it to continue.</strong>
 </noscript>
-<div id="app"></div>
 </body>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRNR474RR8"></script>
@@ -53,5 +52,10 @@
     gtag('js', new Date());
 
     gtag('config', 'G-NRNR474RR8');
+</script>
+<script>
+    tailwind.config = {
+        darkMode: 'class'
+    };
 </script>
 </html>

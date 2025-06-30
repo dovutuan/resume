@@ -13,18 +13,6 @@ defineComponent({name: 'BodyComponent'});
   <main class="container mx-auto p-4">
     <div class="grid lg:grid-cols-4 gap-4">
       <!-- Left Column -->
-      <div class="lg:col-span-3 space-y-4">
-        <!-- About Section -->
-        <about-component/>
-
-        <!-- Experience Section -->
-        <experience-component/>
-
-        <!-- Projects Section -->
-        <project-component/>
-      </div>
-
-      <!-- Right Column -->
       <div class="space-y-4">
         <!-- Education Section -->
         <education-component/>
@@ -35,6 +23,18 @@ defineComponent({name: 'BodyComponent'});
         <!-- Certifications Section -->
 
         <!-- Languages Section -->
+      </div>
+
+      <!-- Right Column -->
+      <div class="lg:col-span-3 space-y-4">
+        <!-- About Section -->
+        <about-component/>
+
+        <!-- Experience Section -->
+        <experience-component/>
+
+        <!-- Projects Section -->
+        <project-component/>
       </div>
     </div>
   </main>
